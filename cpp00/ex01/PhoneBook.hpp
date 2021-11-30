@@ -1,6 +1,9 @@
 #ifndef  PHONEBOOK_CLASS_H
 # define  PHONEBOOK_CLASS_H
 
+#include <iostream>
+#include "Contact.hpp"
+
 class PhoneBook{
 
 public:
@@ -8,7 +11,10 @@ public:
     ~PhoneBook(void);
 
 private:
-    // int nb_contact;
+    Contact (*_nul)[8];
+
+    // Contact hello;
+    // contact[1] = &(hello);
 
 };
 
