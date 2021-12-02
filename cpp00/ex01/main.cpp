@@ -1,26 +1,32 @@
 #include <iostream>
 #include "PhoneBook.hpp"
 
+int		check_num(std::string str)
+{
+	return (1);
+}
+
 void	start_phoneBook(void)
 {
-	PhoneBook	annuaire;
-	std::string str;
+	PhoneBook	pB;
+	std::string input;
+	int	choice;
 
 	do
 	{
 		std::cout << "Enter your command : ";
-		getline(std::cin, str);
-		if (str.compare("EXIT") == 0 || str.empty())
+		getline(std::cin, input);
+		if (input.compare("EXIT") == 0 || input.empty())
 			break ;	
-		else if (str.compare("ADD") == 0)
-			std::cout << "Let's add a new Contact!";
-		else if (str.compare("SEARCH") == 0)
-			std::cout << "Who are you looking for?";
-		else if(!str.empty())
+		else if (input.compare("ADD") == 0)
+			pB.add_contact();
+		else if (input.compare("SEARCH") == 0)
+			pB.search();
+		else if(!input.empty())
 			std::cout << "Invalid command, try again.";
 		std::cout << std::endl;
 	}
-	while (!str.empty());
+	while (!input.empty());
 	std::cout << "Thank you for using our phoneBook!"<< std::endl;
 
 }

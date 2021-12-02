@@ -9,9 +9,16 @@ class PhoneBook{
 public:
     PhoneBook(void);
     ~PhoneBook(void);
+    void    add_contact(void);
+    void    search(void);
+    void    print_list_contact(void);
+    void    print_contact(int index);
+    // static int     nb_contact;
+
 
 private:
-    Contact (*_nul)[8];
+    Contact _contact[8];
+    static int  _nb_contact;
 
     // Contact hello;
     // contact[1] = &(hello);
