@@ -17,6 +17,18 @@ std::string	infos[5] = {
 	"Darkest secret"
 };
 
+bool	is_phone_nb(std::string nb)
+{
+	int i = 0;
+	while (nb[i])
+	{
+		if (!isdigit(nb[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 void	PhoneBook::add_contact(void){
 	std::string input;
 	std::string tmpInfo[5];
@@ -33,8 +45,11 @@ void	PhoneBook::add_contact(void){
 			std::cout << infos[i] << std::endl;
 			getline(std::cin, tmpInfo[i]);
 		} while(tmpInfo[i].empty());
+		if (i == 4 && is_phone_nb(tmpInfo[i]) == false)
+			std::cout << "Be aware of scams this phone number seems fishy" << std::endl;
 	}
-	std::cout << "Oh no ~ The phoneBook is full, sorry mate you need a premium account" << std::endl;
+	this->_contact[this->_nb_contact].set_info(tmpInfo);
+	std::cout << "Congrats for this new friend!" << std::endl;
 
 }
 
@@ -44,6 +59,7 @@ void	PhoneBook::print_list_contact(void){
 	std::cout << "#---------------------------------------------------------------------------------------#" << std::endl;
 	std::cout << "|	index	|	first name	|	last name	|	nickname	|" << std::endl;
 	std::cout << "#---------------------------------------------------------------------------------------#" << std::endl;
+	
 	// std::cout << "#-----------------------------------------------------#" << std::endl;
 	// for(int i = 0; i < this->nb_contact; i++)
 	// {

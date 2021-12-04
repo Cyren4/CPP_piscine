@@ -13,8 +13,6 @@ public:
     void    search(void);
     void    print_list_contact(void);
     void    print_contact(int index);
-    // static int     nb_contact;
-
 
 private:
     Contact _contact[8];
