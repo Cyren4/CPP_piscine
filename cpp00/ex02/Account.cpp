@@ -33,7 +33,7 @@ Account::Account(int initial_deposit){
 
 Account::~Account(void){
     Account::_displayTimestamp();
-    std::cout << " index:" << Account::_nbAccounts;
+    std::cout << " index:" << this->_accountIndex;
     std::cout << ";amount:" << this->_amount << ";close" << std::endl;
 }
 
