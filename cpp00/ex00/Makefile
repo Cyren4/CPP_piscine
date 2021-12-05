@@ -6,14 +6,14 @@
 #    By: cramdani <cramdani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 22:29:36 by cramdani          #+#    #+#              #
-#    Updated: 2021/11/28 23:22:03 by cramdani         ###   ########.fr        #
+#    Updated: 2021/12/05 15:51:34 by cramdani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	clang++
+CXX		=	clang++
 RM		=	rm -rf
 NAME	=	megaphone
-CC_FLAGS	=	-Wall -Wextra -Werror 
+CXX_FLAGS	=	-Wall -Wextra -Werror 
 
 SRCS	=	megaphone.cpp
 OBJS	=	$(SRCS:.cpp=.o)
@@ -21,7 +21,7 @@ OBJS	=	$(SRCS:.cpp=.o)
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
-			@$(CC) $(CC_FLAGS) -o $(NAME) $(OBJS)
+			@$(CXX) $(CXX_FLAGS) -o $(NAME) $(OBJS)
 
 clean	:
 			@$(RM) $(OBJS)

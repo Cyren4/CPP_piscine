@@ -5,11 +5,11 @@ void start_phoneBook(void)
 {
 	PhoneBook	pB;
 	std::string input;
-	int			choice;
 
 	do
 	{
-		std::cout << "Enter your command : ";
+		std::cout << "Enter your command : {ADD, SEARCH, EXIT}" << std::endl;
+		std::cout << "command : ";
 		getline(std::cin, input);
 		if (input.compare("EXIT") == 0 || input.empty())
 			break;
@@ -19,6 +19,11 @@ void start_phoneBook(void)
 			pB.search();
 		else if (!input.empty())
 			std::cout << "Invalid command, try again.";
+		if (std::cin.eof())
+		{
+			std::cout << "Well done Nills, You broke me!";
+			exit(5);
+		}
 		std::cout << std::endl;
 	} while (!input.empty());
 	std::cout << "Thank you for using our phoneBook!" << std::endl;

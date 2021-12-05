@@ -1,9 +1,9 @@
 CXX		=	clang++
 RM		=	rm -rf
-NAME	=	phoneBook 
+NAME	=	globalBanksters 
 CXXFLAGS	=	-Wall -Wextra -Werror 
 
-SRCS	=	main.cpp PhoneBook.cpp Contact.cpp
+SRCS	=	tests.cpp Account.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 
