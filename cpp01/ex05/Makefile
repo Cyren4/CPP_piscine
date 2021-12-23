@@ -2,12 +2,12 @@ CXX		=	clang++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror 
 
-NAME	=	replace 
+NAME	=	karen 
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
 
-SRCS_F	=	main.cpp 
+SRCS_F	=	main.cpp Karen.cpp 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_F))
 
 OBJS = $(addprefix $(DIR_OBJS)/,$(SRCS_F:.cpp=.o))
