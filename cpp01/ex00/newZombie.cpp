@@ -1,18 +1,6 @@
 
-#include "newZombie.hpp"
+#include "Zombie.hpp"
 
-newZombie::newZombie() {
-	return ;
-}
-
-newZombie::~newZombie() {
-	return ;
-}
-
-newZombie::newZombie(newZombie &copy) {
-	return ;
-}
-
-newZombie	&newZombie::operator=(newZombie & rhs) {
-	return (*this);
+Zombie	*newZombie(std::string name){
+	return new Zombie(name);
 }
