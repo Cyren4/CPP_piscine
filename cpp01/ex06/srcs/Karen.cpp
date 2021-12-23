@@ -12,16 +12,19 @@ typedef	void	(Karen::*lvlPtr[4])(void);
 void    Karen::complain(std::string level){
 	std::string const lvl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};	
 	lvlPtr bark = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
+	bool	existLVL = false;
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (level.compare(lvl[i]) == 0)
+		if (level.compare(lvl[i]) == 0 || existLVL == true)
 		{
 			(this->*(bark[i]))();
-			return ;
+			existLVL = true;
+			std::cout << std::endl;
 		}
 	}
-	std::cout << "Such a level doesn't exists yet you fool" << std::endl;
+	if (existLVL == false)
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
 
 void    Karen::debug(void)
