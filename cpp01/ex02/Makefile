@@ -1,4 +1,4 @@
-CXX		=	clang++
+CXX		=	c++
 RM		=	rm -rf
 NAME	=	HiBrain 
 CXXFLAGS	=	-Wall -Wextra -Werror 

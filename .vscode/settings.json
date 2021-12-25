@@ -79,6 +79,7 @@
         "map": "cpp",
         "stack": "cpp",
         "codecvt": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "filesystem": "cpp"
     }
 }

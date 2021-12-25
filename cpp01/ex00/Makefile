@@ -1,4 +1,4 @@
-CXX		=	clang++
+CXX		=	c++
 RM		=	rm -rf
 NAME	=	walkingDead 
 CXXFLAGS	=	-Wall -Wextra -Werror 

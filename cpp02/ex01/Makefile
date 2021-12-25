@@ -2,12 +2,12 @@ CXX		=	c++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror 
 
-NAME	=	karenFilter 
+NAME	=	a.out 
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
 
-SRCS_F	=	main.cpp Karen.cpp 
+SRCS_F	=	main.cpp Fixed.cpp 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_F))
 
 OBJS = $(addprefix $(DIR_OBJS)/,$(SRCS_F:.cpp=.o))
