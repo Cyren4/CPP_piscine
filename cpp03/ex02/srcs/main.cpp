@@ -15,8 +15,6 @@ int main(){
 
     std::cout <<std::endl<< "Let's create try several constructor :" << std::endl;
     FragTrap p0("Rock");
-    ScavTrap p1("Rock");
-    p1.guardGate();
     FragTrap p2;
     FragTrap p3(p0);
 }
