@@ -7,5 +7,8 @@ int main(){
     DiamondTrap p("yo");
     p.attack("wsh");
     p.showParam();
+    std::cout << std::endl << "Let's try special functions :" << std::endl;
     p.whoAmI();
+    p.guardGate();
+    p.highFivesGuys();
 }
