@@ -5,6 +5,10 @@
 #include <iostream>
 
 class FragTrap : virtual public ClapTrap{
+	protected: 
+		static const int		_hp = 100;
+    	static const int		_ep = 100;
+        static const int		_ad = 30;
     public:
         FragTrap(); //defaut
 		FragTrap(std::string name); //defaut
@@ -13,7 +17,8 @@ class FragTrap : virtual public ClapTrap{
 
 		FragTrap& operator=(FragTrap const & CT); //operateur	
 
-		void	highFivesGuys(void);
+		void	attack(std::string const & target);
+		void	highFivesGuys(void) const;
 };
 
 

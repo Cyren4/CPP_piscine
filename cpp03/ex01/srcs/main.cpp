@@ -8,6 +8,7 @@ int main(){
         p1.showParam();
         p1.beRepaired(10);
         p1.takeDamage(10);
+        p1.attack("gaara");
         p1.guardGate();
         p1.showParam();
     }

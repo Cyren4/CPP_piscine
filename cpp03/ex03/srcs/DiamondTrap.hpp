@@ -8,7 +8,6 @@
 class DiamondTrap : public FragTrap, public ScavTrap {
     private:
         std::string	_name;
-        
     public:
         DiamondTrap(); //defaut
 		DiamondTrap(std::string name); //defaut
@@ -17,8 +16,9 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 
 		DiamondTrap& operator=(DiamondTrap const & CT); //operateur	
 
-		void	guardGate(void);
+		void	attack(std::string const & target);
 		void	showParam()const;
+		void	whoAmI(void) const;
 };
 
 

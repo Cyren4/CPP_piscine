@@ -5,5 +5,7 @@
 
 int main(){
     DiamondTrap p("yo");
+    p.attack("wsh");
     p.showParam();
+    p.whoAmI();
 }

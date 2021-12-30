@@ -7,14 +7,15 @@ int main(){
     {
         FragTrap p1("lee");
         p1.showParam();
-        p1.beRepaired(10);
-        p1.takeDamage(10);
-        p1.showParam();
+        p1.attack("gaara");
+        // p1.beRepaired(10);
+        // p1.takeDamage(10);
+        // p1.showParam();
         p1.highFivesGuys();
     }
 
-    std::cout <<std::endl<< "Let's create try several constructor :" << std::endl;
-    FragTrap p0("Rock");
-    FragTrap p2;
-    FragTrap p3(p0);
+    // std::cout <<std::endl<< "Let's create try several constructor :" << std::endl;
+    // FragTrap p0("Rock");
+    // FragTrap p2;
+    // FragTrap p3(p0);
 }

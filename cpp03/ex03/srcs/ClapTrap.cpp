@@ -35,12 +35,12 @@ ClapTrap& ClapTrap::operator=(ClapTrap const & ct){
 void ClapTrap::attack(std::string const & target){
 	if (this->_energyPoints == 0)
 	{
-		std::cout << "<" << this->_name<< "> can't attack he is dead(energyPoints == 0)";
+		std::cout << "ClapTrap : <" << this->_name<< "> can't attack he is dead(energyPoints == 0)"<< std::endl;
 		return;
 	}
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "<" << this->_name<< "> can't attack (hitPoints == 0)";
+		std::cout << "ClapTrap : <" << this->_name<< "> can't attack (hitPoints == 0)"<< std::endl;
 		return;
 	}
 	std::cout << "ClapTrap <" << this->_name;
@@ -52,7 +52,7 @@ void ClapTrap::attack(std::string const & target){
 void ClapTrap::takeDamage(unsigned int amount){
 	if (this->_energyPoints == 0)
 	{
-		std::cout << "<" << this->_name<< "> can't take damage he is dead(energyPoints == 0)";
+		std::cout << "<" << this->_name<< "> can't take damage he is dead(energyPoints == 0)"<< std::endl;
 		return;
 	}
     std::cout << "ClapTrap <" << this->_name;
@@ -68,13 +68,13 @@ void ClapTrap::takeDamage(unsigned int amount){
 
 void ClapTrap::beRepaired(unsigned int amount){
 	if (this->_energyPoints == 0)
-		std::cout << "<" << this->_name<< "> was dead you just resurected him";
+		std::cout << "<" << this->_name<< "> was dead you just resurected him"<< std::endl;
 	std::cout << "ClapTrap <" << this->_name;
 	std::cout << "> gets <" << amount << "> points of repaired!" << std::endl;
     this->_energyPoints += amount;
 	std::cout <<"<" << this->_name << "> Current energy points: " << this->_energyPoints << std::endl;
 }
 
-void	ClapTrap::showParam()const{
+void	ClapTrap::showParam() const{
 	std::cout << "<" << this->_name << "> : hitPoints = " << this->_hitPoints << "; energyPoints = "<< this->_energyPoints << "; attack damage = " << this->_attackDamage << std::endl;
 }

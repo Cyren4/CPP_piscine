@@ -1,6 +1,6 @@
 CXX		=	c++
 RM		=	rm -rf
-CXXFLAGS	=	-Wall -Wextra -Werror 
+CXXFLAGS	=	-Wall -Wextra -Werror  -Wshadow -Wno-shadow 
 
 NAME	=	octogone	
 
