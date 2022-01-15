@@ -15,6 +15,9 @@ int main() {
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
+		delete meta;
+		delete j;
+		delete i;
 	}
 	std::cout << std::endl << "Test without virtual function"<< std::endl;
 	{
@@ -24,5 +27,7 @@ int main() {
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //will output the cat sound!
 		meta->makeSound();
+		delete meta;
+		delete i;
 	}
 }

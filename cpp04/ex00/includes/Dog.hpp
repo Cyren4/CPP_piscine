@@ -13,7 +13,7 @@ class Dog : public Animal{
 
 		Dog& operator=(Dog const & a); //operateu
 
-		virtual void    makeSound(void) const;
+		void    makeSound(void) const;
 };
 
 #endif
