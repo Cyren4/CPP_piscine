@@ -1,9 +1,8 @@
 CXX		=	c++
 RM		=	rm -rf
-CXXFLAGS	=	-Wall -Wextra -Werror 
-CXXFLAGS += -fsanitize=address -g3
+CXXFLAGS	=	-Wall -Wextra -Werror -g
 
-NAME	=	farm	
+NAME	=	game	
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs

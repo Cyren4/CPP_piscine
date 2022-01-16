@@ -1,7 +1,6 @@
 CXX		=	c++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror 
-CXXFLAGS += -fsanitize=address -g3
 
 NAME	=	farm	
 

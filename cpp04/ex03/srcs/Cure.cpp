@@ -10,7 +10,10 @@ Cure::~Cure(){}
 
 Cure&		Cure::operator=(Cure const & a){
 	if (this != &a)
+	{
 		this->_type = a._type;
+		this->_isAvailable = a._isAvailable;
+	}
 	return *this;
 }
 

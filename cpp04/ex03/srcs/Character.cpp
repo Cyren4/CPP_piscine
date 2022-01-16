@@ -15,7 +15,16 @@ Character::Character(Character const & src)
 	*this = src;
 }
 
-Character::~Character(){}
+Character::~Character(){
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = i + 1 ; j < 4 ; j++)
+			if (this->_inventory[i] == this->_inventory[j])
+				this->_inventory[j] = NULL;
+		delete this->_inventory[i];
+		this->_inventory[i] = NULL;
+	}
+}
 		
 Character&		Character::operator=(Character const & src){
 	if (this == &src)
@@ -23,8 +32,10 @@ Character&		Character::operator=(Character const & src){
 	this->_name = src._name;
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] != NULL)
-			delete this->_inventory[i]; 
+		for (int j = i + 1 ; j < 4 ; j++)
+			if (this->_inventory[i] == this->_inventory[j])
+				this->_inventory[j] = NULL;
+		delete this->_inventory[i];
 		this->_inventory[i] = NULL;
 		if (src._inventory[i])
 			this->_inventory[i] = src._inventory[i]->clone(); 
@@ -37,10 +48,16 @@ std::string const & Character::getName() const{
 }
 
 void Character::equip(AMateria* m){
+	if (m == NULL || m->getAvailable() == false)
+	{
+		std::cout << m->getType() << " already used" << std::endl;
+		return ;
+	}
 	for(int i = 0; i < 4 ; i++)
 	{
 		if (this->_inventory[i] == NULL)
 		{
+			m->setAvailable(false);
 			this->_inventory[i] = m;
 			std::cout << this->_name << " got a new equipment : "<< m->getType() << std::endl;
 			return ;
@@ -56,6 +73,7 @@ void Character::unequip(int idx){
 		std::cout << idx << " : invalid index. This inventory index is empty" << std::endl;
 	else 
 	{
+		this->_inventory[idx]->setAvailable(true);
 		this->_inventory[idx] = NULL;
 		std::cout << idx << " :  inventory index got emptied" << std::endl;
 	}

@@ -24,18 +24,24 @@ MateriaSource& MateriaSource::operator=(MateriaSource const & src){
 		if (this->learnedMateria[i] != NULL)
 			delete this->learnedMateria[i];
 		this->learnedMateria[i] = NULL;
-		if (mat.learnedMateria[i] != NULL)
-			this->learnedMateria[i] = mat.learnedMateria[i]->clone(); 
+		if (src.learnedMateria[i] != NULL)
+			this->learnedMateria[i] = src.learnedMateria[i]->clone(); 
 	}
 	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* mat){
+	if (mat == NULL || mat->getAvailable() == false)
+	{
+		std::cout << mat->getType() << " already used" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->learnedMateria[i] == NULL)
 		{
-			this->learnedMateria[i] = mat->clone();
+			mat->setAvailable(false);
+			this->learnedMateria[i] = mat;
 			return;
 		}
 	}
@@ -44,8 +50,12 @@ void MateriaSource::learnMateria(AMateria* mat){
 
 AMateria* MateriaSource::createMateria(std::string const & type){
 	for (int i = 0; i < 4; i++)
-		if (type.compare(this->learnedMateria[i]->getType()) == 0)
-			return this->learnedMateria[i]->clone(); 
+		if (this->learnedMateria[i] != NULL && type.compare(this->learnedMateria[i]->getType()) == 0)
+		{
+			AMateria* tmp = this->learnedMateria[i]->clone(); 
+			tmp->setAvailable(true);
+			return tmp;
+		}
 	std::cout << type << " : unknown materia" << std::endl;
 	return NULL;
 }

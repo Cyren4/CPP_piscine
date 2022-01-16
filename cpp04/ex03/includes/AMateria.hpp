@@ -10,6 +10,7 @@ class AMateria
 {
 	protected:
 		std::string _type;
+		bool		_isAvailable;
 	public:
 		AMateria();
 		AMateria(std::string const & type);
@@ -18,9 +19,11 @@ class AMateria
 		AMateria& operator=(AMateria const & a); 
 
 
-	std::string const & getType() const; //Returns the materia type
+	std::string const & getType(void) const; //Returns the materia type
+	bool	getAvailable(void) const;
+	void	setAvailable(bool state);
 
-	virtual AMateria* clone() const = 0;
+	virtual AMateria* clone(void) const = 0;
 	virtual void use(ICharacter& target);
 };
 

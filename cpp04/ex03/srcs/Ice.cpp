@@ -1,6 +1,5 @@
 #include "../includes/Ice.hpp"
 
-
 Ice::Ice():AMateria("ice"){}
 
 Ice::Ice(Ice const & src){
@@ -11,7 +10,10 @@ Ice::~Ice(){}
 
 Ice&		Ice::operator=(Ice const & a){
 	if (this != &a)
+	{
 		this->_type = a._type;
+		this->_isAvailable = a._isAvailable;
+	}
 	return *this;
 }
 

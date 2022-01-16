@@ -4,11 +4,10 @@
 #include <iostream>
 
 class Animal{
-	private:
-		Animal();
 	protected:
 		std::string _type;
     public:
+		Animal();
 		Animal(std::string type);
 		Animal(Animal const & src);
 		virtual ~Animal();
