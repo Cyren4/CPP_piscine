@@ -22,7 +22,7 @@ int main(int ac, char **av){
 		std::cout << "Error : Can't open " << av[1] << std::endl;
 		return (0);
 	}
-	std::string tmp;
+	std::string tmp, cat;
 	std::string file = av[1];
 	file +=  ".replace";
 	std::ofstream ofs(file);
@@ -33,22 +33,19 @@ int main(int ac, char **av){
 		return (0);
 	}
 	while (std::getline(ifs, tmp))
+		cat += tmp + "\n" ;
+	size_t i = 0;
+	while (cat[i] != '\0')
 	{
-		size_t i = 0;
-		while (tmp[i] != '\0')
+		if (cat.compare(i, s1.length(), s1) == 0)
 		{
-			if (tmp.compare(i, s1.length(), s1) == 0)
-			{
-				ofs << s2;
-				i += s1.length();
-				continue ;
-			}
-			else
-				ofs << tmp[i];
-			i++;
+			ofs << s2;
+			i += s1.length();
+			continue ;
 		}
-		if (!ifs.eof())
-			ofs << std::endl;
+		else
+			ofs << cat[i];
+		i++;
 	}
 	ifs.close();
 	ofs.close();
