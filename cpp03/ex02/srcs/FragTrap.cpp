@@ -16,23 +16,6 @@ FragTrap::~FragTrap(){
 	std::cout << "FragTrap <" << ClapTrap::_name<< ">  - destructor called" << std::endl;
 }
 
-void FragTrap::attack(std::string const & target){
-	if (this->_energyPoints == 0)
-	{
-		std::cout << "FragTrap : <" << this->_name<< "> can't attack he is dead(energyPoints == 0)"<< std::endl;
-		return;
-	}
-	if (this->_hitPoints == 0)
-	{
-		std::cout << "FragTrap : <" << this->_name<< "> can't attack (hitPoints == 0)"<< std::endl;
-		return;
-	}
-	std::cout << "FragTrap <" << this->_name;
-	std::cout << "> attacks <" << target << ">, causing <";
-	std::cout << this->_attackDamage << "> points of damage!" << std::endl;
-	this->_hitPoints--;
-}
-
 void	FragTrap::highFivesGuys(void){
 	std::cout << "FragTrap  <" << ClapTrap::_name<< ">  wants to high five everyone ! (but can't because of social distanciation)" << std::endl;
 }

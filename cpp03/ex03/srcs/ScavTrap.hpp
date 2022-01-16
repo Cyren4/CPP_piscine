@@ -6,9 +6,9 @@
 
 class ScavTrap : virtual public ClapTrap{
 	protected: 
-		static const int		_hp = 100;
-    	static const int		_ep = 50;
-        static const int		_ad = 20;
+		static const unsigned int		_hp = 100;
+    	static const unsigned int		_ep = 50;
+		static const unsigned int		_ad = 20;
     public:
         ScavTrap(); //defaut
 		ScavTrap(std::string name); //defaut

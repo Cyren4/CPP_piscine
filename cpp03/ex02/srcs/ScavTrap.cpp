@@ -17,20 +17,14 @@ ScavTrap::~ScavTrap(){
 }
 
 void ScavTrap::attack(std::string const & target){
-	if (this->_energyPoints == 0)
-	{
-		std::cout << "ScavTrap : <" << this->_name<< "> can't attack he is dead(energyPoints == 0)"<< std::endl;
-		return;
-	}
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "ScavTrap : <" << this->_name<< "> can't attack (hitPoints == 0)"<< std::endl;
+		std::cout << "ScavTrap : <" << this->_name<< "> can't attack he is dead(hitPoints == 0)" << std::endl;
 		return;
 	}
 	std::cout << "ScavTrap <" << this->_name;
 	std::cout << "> attacks <" << target << ">, causing <";
 	std::cout << this->_attackDamage << "> points of damage!" << std::endl;
-	this->_hitPoints--;
 }
 
 void	ScavTrap::guardGate(void){

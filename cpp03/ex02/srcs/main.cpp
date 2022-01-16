@@ -8,9 +8,9 @@ int main(){
         FragTrap p1("lee");
         p1.showParam();
         p1.attack("gaara");
-        // p1.beRepaired(10);
+        p1.beRepaired(100);
         // p1.takeDamage(10);
-        // p1.showParam();
+        p1.showParam();
         p1.highFivesGuys();
     }
 

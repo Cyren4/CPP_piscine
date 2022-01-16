@@ -1,12 +1,16 @@
 #include "ClapTrap.hpp"
 
 int main(){
-    ClapTrap p1;
-    ClapTrap p2("Hipman");
-    ClapTrap p3(p2);
+    ClapTrap p1("Hipman");
+    ClapTrap p2;
+    // ClapTrap p3(p2);
+
+    p1.showParam();
     p1.attack("Hipman");
-    p2.showParam();
-    p2.takeDamage(10);
-    p2.beRepaired(20);
-    p2.showParam();
+    p1.takeDamage(10);
+    p1.takeDamage(UINT32_MAX);
+    p1.beRepaired(UINT32_MAX);
+    p1.showParam();
+    p1.beRepaired(3);
+    p1.showParam();
 }

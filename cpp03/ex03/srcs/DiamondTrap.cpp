@@ -40,10 +40,10 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const & ct){
 	return *this;
 }
 
-void	DiamondTrap::attack(std::string const & target) 
-{
-	ScavTrap::attack(target);	
-}
+// void	DiamondTrap::attack(std::string const & target) 
+// {
+// 	ScavTrap::attack(target);	
+// }
 
 void	DiamondTrap::showParam()const{
 	std::cout << "DiamondTrap : " << _name << std::endl;
