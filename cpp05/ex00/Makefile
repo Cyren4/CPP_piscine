@@ -2,7 +2,7 @@ CXX		=	c++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror -g
 
-NAME	=	game	
+NAME	=	bureaucrat
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs

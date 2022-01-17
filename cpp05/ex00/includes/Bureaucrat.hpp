@@ -9,7 +9,7 @@ class Bureaucrat {
 		int _grade;
 	public:
 		Bureaucrat();
-		Bureaucrat(std::string name, int grade) throw();
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat(Bureaucrat const & src);
 		~Bureaucrat();
 
@@ -18,8 +18,8 @@ class Bureaucrat {
 		std::string     getName(void) const;
 
 		int     getGrade(void) const;
-		void	betterGrade() throw();
-		void	worseGrade() throw();
+		void	betterGrade();
+		void	worseGrade();
 
 		class GradeTooHighException : public std::exception{
 			private:
