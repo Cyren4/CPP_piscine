@@ -50,7 +50,7 @@ void	Bureaucrat::worseGrade()
 }
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat const & bur){
-	o << bur.getName() << ", bureaucrat grade " << bur.getGrade();
+	o << "<" <<bur.getName() << "> bureaucrat grade " << bur.getGrade();
 	return o;
 }
 
