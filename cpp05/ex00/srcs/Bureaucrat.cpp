@@ -54,7 +54,18 @@ std::ostream& operator<<(std::ostream& o, Bureaucrat const & bur){
 	return o;
 }
 
-Bureaucrat::GradeTooHighException(){
-	std::cout << "Bureaucrat exception : grade is too high" << std::cout;
+//------------Classe exception------------//
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(){}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Bureaucrat exception : grade is too high";
 }
 
+Bureaucrat::GradeTooLowException::GradeTooLowException(){}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Bureaucrat exception : grade is too low";
+}

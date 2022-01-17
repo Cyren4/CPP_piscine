@@ -25,20 +25,16 @@ class Bureaucrat {
 			private:
 				static const int max = 1;
 			public :
-				GradeTooHighException(){}
-				const char * what () const throw (){
-					return "Bureaucrat exception : grade is too high";
-				}
+				GradeTooHighException();
+				const char * what () const throw ();
 		};
 
 		class GradeTooLowException : public std::exception{
 			private:
 				static const int max = 1;
 			public :
-				GradeTooLowException(){}
-				const char * what () const throw (){
-					return "Bureaucrat exception : grade is too low";
-				}
+				GradeTooLowException();
+				const char * what () const throw ();
 		};
 };
 
