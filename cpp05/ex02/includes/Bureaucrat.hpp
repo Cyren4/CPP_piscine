@@ -19,7 +19,7 @@ class Bureaucrat {
 		Bureaucrat&	operator=(Bureaucrat const & a); 
 
 		//------- member  function
-		void	signForm(Form & b);
+		void	signForm(Form const & b);
 		void	betterGrade();
 		void	worseGrade();
 
@@ -28,16 +28,12 @@ class Bureaucrat {
 		int     getGrade(void) const;
 
 		class GradeTooHighException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				GradeTooHighException();
 				virtual const char * what () const throw ();
 		};
 
 		class GradeTooLowException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				GradeTooLowException();
 				virtual const char * what () const throw ();

@@ -21,7 +21,8 @@ class Form{
         Form&    operator=(Form const & src);
 
 		//------- member  function
-		void	beSigned(Bureaucrat & b);
+		void	beSigned(Bureaucrat const & b);
+		virtual void	execute(Bureaucrat const & b);
 
 		//-------getter
 		const std::string     getName(void) const;
@@ -43,6 +44,14 @@ class Form{
 				static const int max = 1;
 			public :
 				GradeTooLowException();
+				virtual const char * what () const throw ();
+		};
+
+		class notSignedException : public std::exception{
+			private:
+				static const int max = 1;
+			public :
+				notSignedException();
 				virtual const char * what () const throw ();
 		};
 };

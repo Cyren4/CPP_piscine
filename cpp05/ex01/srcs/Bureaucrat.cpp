@@ -24,7 +24,7 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src){
 }
 //------------Member function
 
-void	Bureaucrat::signForm(Form & f){
+void	Bureaucrat::signForm(Form const & f){
 	try{
 		f.beSigned(*this);
 		std::cout << "<"<< this->_name << "> signs <" << f.getName() << ">" << std::endl;

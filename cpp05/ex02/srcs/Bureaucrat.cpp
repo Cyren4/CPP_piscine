@@ -24,7 +24,7 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src){
 }
 //------------Member function
 
-void	Bureaucrat::signForm(Form & f){
+void	Bureaucrat::signForm(Form const & f){
 	try{
 		f.beSigned(*this);
 		std::cout << "<"<< this->_name << "> signs <" << f.getName() << ">" << std::endl;
@@ -32,6 +32,16 @@ void	Bureaucrat::signForm(Form & f){
 		std::cout << "<"<< this->_name << "> cannot sign <" << f.getName() << "> because (" << e.what() << ")"<< std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(Form const & f){
+	try{
+		f.execute(*this);
+		std::cout << "<"<< this->_name << "> executes <" << f.getName() << ">" << std::endl;
+	}catch (std::exception & e){
+		std::cout << "<"<< this->_name << "> cannot execute <" << f.getName() << "> because (" << e.what() << ")"<< std::endl;
+	}
+}
+
 //------------Getter
 
 const std::string     Bureaucrat::getName(void) const{

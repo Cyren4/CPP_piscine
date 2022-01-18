@@ -21,7 +21,7 @@ class Form{
         Form&    operator=(Form const & src);
 
 		//------- member  function
-		void	beSigned(Bureaucrat & b);
+		void	beSigned(Bureaucrat const & b);
 
 		//-------getter
 		const std::string     getName(void) const;

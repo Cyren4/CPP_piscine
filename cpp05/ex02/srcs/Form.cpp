@@ -49,10 +49,18 @@ int	Form::getSignGrade(void) const{
 }
 
 //----------Member Function
-void	Form::beSigned(Bureaucrat & b){
+void	Form::beSigned(Bureaucrat const & b){
 	if (b.getGrade() > this->getSignGrade())
 		throw GradeTooLowException();
 	this->_signed = true;
+}
+
+void	Form::execute(Bureaucrat const & b){
+	if (this->_signed == false)
+		throw notSignedException();
+	if (b.getGrade() > this->getExecGrade())
+		throw GradeTooLowException();
+	std::cout << "<random_Form> : " << this->_name << " got executed." << std::endl;
 }
 
 //------------Classe exception------------//
@@ -69,6 +77,13 @@ Form::GradeTooLowException::GradeTooLowException(){}
 const char* Form::GradeTooLowException::what() const throw()
 {
 	return "Form exception : grade is too low";
+}
+
+Form::notSignedException::notSignedException(){}
+
+const char* Form::notSignedException::what() const throw()
+{
+	return "Form exception : not signed form can't be executed";
 }
 
 

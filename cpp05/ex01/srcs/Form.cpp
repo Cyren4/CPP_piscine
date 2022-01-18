@@ -49,7 +49,7 @@ int	Form::getSignGrade(void) const{
 }
 
 //----------Member Function
-void	Form::beSigned(Bureaucrat & b){
+void	Form::beSigned(Bureaucrat const & b){
 	if (b.getGrade() > this->getSignGrade())
 		throw GradeTooLowException();
 	this->_signed = true;

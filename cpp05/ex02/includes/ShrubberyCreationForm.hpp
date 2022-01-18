@@ -6,16 +6,20 @@
 
 
 class ShrubberyCreationForm{
+    private:
+        std::string const	_target;
+        std::string const	asciiForest[3];
+        void    writeTree(std::ostream& o);
     public:
         ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string name);
+		ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(ShrubberyCreationForm const & src);
         ~ShrubberyCreationForm();
 
         ShrubberyCreationForm&    operator=(ShrubberyCreationForm const & src);
 
 // 		//------- member  function
-		void	beExecuted(Bureaucrat & b);
+		void	execute(Bureaucrat const & b);
 
 };
 
