@@ -26,7 +26,7 @@ class Bureaucrat {
 				static const int max = 1;
 			public :
 				GradeTooHighException();
-				const char * what () const throw ();
+				virtual const char * what () const throw ();
 		};
 
 		class GradeTooLowException : public std::exception{
@@ -34,7 +34,7 @@ class Bureaucrat {
 				static const int max = 1;
 			public :
 				GradeTooLowException();
-				const char * what () const throw ();
+				virtual const char * what () const throw ();
 		};
 };
 
