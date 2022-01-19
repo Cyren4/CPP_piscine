@@ -31,7 +31,7 @@ int main()
 
 	std::cout << std::endl << "----Test sign form----" << std::endl;
 	Form f1("form1", 50, 40);
-	Form f2("form1", 2, 10);
+	Form f2("form2", 2, 10);
 	std::cout << f1 << std::endl;
 	std::cout << f2 << std::endl;
 	try{

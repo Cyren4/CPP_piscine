@@ -48,6 +48,10 @@ int	Form::getSignGrade(void) const{
 	return (this->_sRequired);
 }
 
+bool	Form::getStatus(void) const{
+	return (this->_signed);
+}
+
 //----------Member Function
 void	Form::beSigned(Bureaucrat const & b){
 	if (b.getGrade() > this->getSignGrade())
@@ -73,6 +77,11 @@ const char* Form::GradeTooLowException::what() const throw()
 
 
 std::ostream& operator<<(std::ostream& o, Form const & f){
-	o << "<" << f.getName() << "> form needs grade " << f.getSignGrade() << " to be signed and grade "<< f.getExecGrade() << " to be executed";
+	o << "<" << f.getName() << "> form needs grade " << f.getSignGrade() << " to be signed and grade "<< f.getExecGrade() << " to be executed" << std::endl;
+	o << "Form status : ";
+	if (f.getStatus())
+		o << "Signed" << std::endl;
+	else
+		o << "Not signed" << std::endl;
 	return o;
 }

@@ -25,8 +25,9 @@ class Form{
 
 		//-------getter
 		const std::string     getName(void) const;
-		int	getExecGrade()const;
-		int	getSignGrade()const;
+		int		getExecGrade()const;
+		int		getSignGrade()const;
+		bool	getStatus()const;
 
 //--------Exceptions 
 		class GradeTooHighException : public std::exception{
