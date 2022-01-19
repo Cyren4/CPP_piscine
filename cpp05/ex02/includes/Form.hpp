@@ -12,27 +12,30 @@ class Form{
         int const			_sRequired;//grade to sign
         int const			_xRequired;//grade to execute
         bool				_signed;
+
+		static const int max = 1;
+		static const int min = 150;
     public:
         Form();
 		Form(std::string name, int s_req, int x_req);
         Form(Form const & src);
-        ~Form();
+        virtual ~Form();
 
         Form&    operator=(Form const & src);
 
 		//------- member  function
 		void	beSigned(Bureaucrat const & b);
-		virtual void	execute(Bureaucrat const & b);
+		virtual void	execute(Bureaucrat const & b) const = 0;
+		virtual void	tryExecute(Bureaucrat const & b) const;
 
 		//-------getter
 		const std::string     getName(void) const;
-		int	getExecGrade()const;
-		int	getSignGrade()const;
+		int		getExecGrade()const;
+		int		getSignGrade()const;
+		bool	getStatus()const;
 
 //--------Exceptions 
 		class GradeTooHighException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				GradeTooHighException();
 				virtual const char * what () const throw ();
@@ -40,18 +43,20 @@ class Form{
 
 
 		class GradeTooLowException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				GradeTooLowException();
 				virtual const char * what () const throw ();
 		};
 
 		class notSignedException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				notSignedException();
+				virtual const char * what () const throw ();
+		};
+
+		class alreadySignedException : public std::exception{
+			public :
+				alreadySignedException();
 				virtual const char * what () const throw ();
 		};
 };

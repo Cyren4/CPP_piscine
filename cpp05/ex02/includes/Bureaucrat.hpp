@@ -19,7 +19,8 @@ class Bureaucrat {
 		Bureaucrat&	operator=(Bureaucrat const & a); 
 
 		//------- member  function
-		void	signForm(Form const & b);
+		void	signForm(Form & b);
+		void	executeForm(Form const & b) const;
 		void	betterGrade();
 		void	worseGrade();
 

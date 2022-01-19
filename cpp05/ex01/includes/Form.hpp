@@ -12,6 +12,9 @@ class Form{
         int const			_sRequired;//grade to sign
         int const			_xRequired;//grade to execute
         bool				_signed;
+
+		static const int max = 1;
+		static const int min = 150;
     public:
         Form();
 		Form(std::string name, int s_req, int x_req);
@@ -44,6 +47,12 @@ class Form{
 				static const int max = 1;
 			public :
 				GradeTooLowException();
+				virtual const char * what () const throw ();
+		};
+
+		class alreadySignedException : public std::exception{
+			public :
+				alreadySignedException();
 				virtual const char * what () const throw ();
 		};
 };

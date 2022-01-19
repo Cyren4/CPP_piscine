@@ -2,8 +2,8 @@
 
 Form::Form():
 	_name("random_form"),
-	_sRequired(1),
-	_xRequired(1),
+	_sRequired(Form::min),
+	_xRequired(Form::min),
 	_signed(false)
 {}
 
@@ -13,9 +13,9 @@ Form::Form(std::string name, int s_req, int x_req):
 	_xRequired(x_req),
 	_signed(false)
 {
-	if (x_req < 1 || s_req  < 1)
+	if (x_req < Form::max || s_req  <  Form::max)
 		throw Form::GradeTooHighException();
-	if (x_req > 150 || s_req  > 150)
+	if (x_req > Form::min  || s_req  > Form::min)
 		throw Form::GradeTooLowException();
 }
 
@@ -54,6 +54,8 @@ bool	Form::getStatus(void) const{
 
 //----------Member Function
 void	Form::beSigned(Bureaucrat const & b){
+	if (this->_signed)
+		throw alreadySignedException();
 	if (b.getGrade() > this->getSignGrade())
 		throw GradeTooLowException();
 	this->_signed = true;
@@ -73,6 +75,13 @@ Form::GradeTooLowException::GradeTooLowException(){}
 const char* Form::GradeTooLowException::what() const throw()
 {
 	return "Form exception : grade is too low";
+}
+
+Form::alreadySignedException::alreadySignedException(){}
+
+const char* Form::alreadySignedException::what() const throw()
+{
+	return "Form exception : cannot sign an already signed form";
 }
 
 

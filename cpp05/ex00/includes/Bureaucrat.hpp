@@ -7,6 +7,9 @@ class Bureaucrat {
 	private:
 		std::string const _name;
 		int _grade;
+
+		static const int max = 1;
+		static const int min = 150;
 	public:
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);

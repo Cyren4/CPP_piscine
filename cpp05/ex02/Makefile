@@ -7,7 +7,7 @@ NAME	=	bureaucrat
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
 
-SRCS_F	=	main.cpp Bureaucrat.cpp Form.cpp
+SRCS_F	=	main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_F))
 

@@ -6,9 +6,9 @@
 Bureaucrat::Bureaucrat(): _name("randomB"), _grade(10){}
 Bureaucrat::Bureaucrat(std::string name, int grade) :_name(name)
 {
-	if (grade < 1)
+	if (grade < Bureaucrat::max)
 		throw Bureaucrat::GradeTooHighException();
-	if (grade > 150)
+	if (grade > Bureaucrat::min)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 
@@ -37,14 +37,14 @@ int	Bureaucrat::getGrade(void) const{
 
 void	Bureaucrat::betterGrade() 
 {
-	if (this->_grade <= 1)
+	if (this->_grade <= Bureaucrat::max)
 		throw(Bureaucrat::GradeTooHighException());
 	this->_grade--;
 }
 
 void	Bureaucrat::worseGrade() 
 {
-	if (this->_grade >= 150)
+	if (this->_grade >= Bureaucrat::min)
 		throw(Bureaucrat::GradeTooLowException());
 	this->_grade++;
 }
