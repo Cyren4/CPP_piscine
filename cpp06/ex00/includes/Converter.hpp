@@ -6,15 +6,15 @@
 class Converter{
 
 	private:
-		std::string const literal;
-		std::string const charL;
-		std::string const intL;
-		std::string const floatL;
-		std::string const doubleL;
+		std::string const & literal;
+		char	charL; 
+		int		intL; 
+		float	floatL
+		double	doubleL; 
+
 		Converter();
-		// void* getChar(void) const;
 	public:
-		Converter(std::string literal);
+		Converter(char const &literal);
 		Converter(Converter const & src);
 		~Converter();
 
@@ -24,10 +24,10 @@ class Converter{
 		const std::string     getLiteral(void) const;
         
 // 		//------- member  function
-		const std::string		getChar(void) const;
-		const std::string		getInt(void) const;
-		const std::string		getFloat(void) const;
-		const std::string		getDouble(void) const;
+		char 		getChar(void) const;
+		int		getInt(void) const;
+		float		getFloat(void) const;
+		double	getDouble(void) const;
 
 // 		//-------  Exception 
 		class convertImpossibleException : public std::exception{

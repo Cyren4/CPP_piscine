@@ -1,9 +1,8 @@
 #include "../includes/Converter.hpp"
-		// std::string const &literal;
 
 Converter::Converter():literal("0"){}
 
-Converter::Converter(std::string literal):
+Converter::Converter(char const & literal):
 	literal(literal)
 {}
 
@@ -26,24 +25,21 @@ const std::string     Converter::getLiteral(void) const{
 }
         
 // 		//------- member  function
-const std::string		Converter::getChar(void) const{
+char		Converter::getChar(void) const{
 	std::string ret;	
-	return ret;
+	return *static_cast<char>(this->literal.c_str()));
 }
 
-const std::string		Converter::getInt(void) const{
-	std::string ret;	
-	return ret;
+int		Converter::getInt(void) const{
+	return static_cast<char>(this->literal);
 }
 
-const std::string		Converter::getFloat(void) const{
-	std::string ret;	
-	return ret;
+float		Converter::getFloat(void) const{
+	return static_cast<char>(this->literal);
 }
 
-const std::string		Converter::getDouble(void) const{
-	std::string ret;	
-	return ret;
+double		Converter::getDouble(void) const{
+	return static_cast<char>(this->literal);
 }
 
 // 		//-------  Exception 

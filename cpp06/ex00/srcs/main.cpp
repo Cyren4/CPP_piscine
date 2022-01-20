@@ -9,8 +9,7 @@ int main(int ac, char** av)
 		std::cout << "Usage : ./convert <literal> " << std::endl;
 	}
 	else{
-		std::string tmp = av[1];
-		Converter c(tmp);
+		Converter c(av[1]);
 		std::cout << c;
 	}
 	return 0;
