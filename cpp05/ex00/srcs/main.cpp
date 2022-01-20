@@ -2,6 +2,14 @@
 
 int main()
 {
+	std::cout << "----Test basic----" << std::endl;
+	try{
+		Bureaucrat b1("bob", 160);
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+
 	std::cout << "----Test exception too low----" << std::endl;
 	try{
 		Bureaucrat b1("Grezette1", 149);

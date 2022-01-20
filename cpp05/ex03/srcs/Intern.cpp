@@ -40,6 +40,12 @@ Form*	Intern::makeForm(std::string& name, std::string& target){
 	return NULL;
 }
 
+Form*	Intern::makeForm(const char* name, const char* target){
+	std::string tmpName = name;
+	std::string tmpTarget = target;
+	return this->makeForm(tmpName, tmpTarget);
+}
+
 Form*	Intern::shrubbery(std::string& target) const
 {
 	Form *f = new ShrubberyCreationForm(target);

@@ -80,20 +80,24 @@ int main()
 	}
 	{
 		std::cout << std::endl << "----Test Intern ----" << std::endl;
-		{
-			Intern someRandomIntern;
-			Form* rrf;
-			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		// Intern intern;
-		// try{
-		// 	Form* f = intern.makeForm("unknown", "president");
-		// } catch (std::exception & e){
-		// 	std::cout << e.what() << std::endl;
-		// }
-		// b1.signForm(*f1);
-		// b2.signForm(*f1);
-		// b1.executeForm(*f1);
-		// b2.executeForm(*f1);
+		Intern someRandomIntern;
+		Form* rrf;
+		Form* scf;
+		Form* ppf;
+		std::cout << std::endl << "----robotomy request test----" << std::endl;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		b2.signForm(*rrf);
+		b2.executeForm(*rrf);
+		std::cout << std::endl << "----shrubbery creation test----" << std::endl;
+		scf = someRandomIntern.makeForm("shrubbery creation", "home");
+		b2.signForm(*scf);
+		b2.executeForm(*scf);
+		std::cout << std::endl << "----presidential pardon test ----" << std::endl;
+		ppf = someRandomIntern.makeForm("presidential pardon", "grezette");
+		b2.signForm(*ppf);
+		b2.executeForm(*ppf);
 		delete rrf;
+		delete scf;
+		delete ppf;
 	}
 }

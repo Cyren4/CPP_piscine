@@ -1,8 +1,5 @@
 #include "../includes/Bureaucrat.hpp"
 
-        // std::string const _name;
-        // int _grade;
-
 Bureaucrat::Bureaucrat(): _name("randomB"), _grade(10){}
 Bureaucrat::Bureaucrat(std::string name, int grade) :_name(name)
 {

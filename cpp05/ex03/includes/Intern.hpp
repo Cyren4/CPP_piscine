@@ -23,6 +23,7 @@ class Intern{
 
 
 		Form*	makeForm(std::string& name, std::string& target);
+		Form*	makeForm(const char* name, const char* target);
 
 //	------- Exception 
 		class unknownFormException : public std::exception{

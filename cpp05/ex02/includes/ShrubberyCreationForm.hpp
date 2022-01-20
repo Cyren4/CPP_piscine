@@ -10,7 +10,6 @@ class ShrubberyCreationForm : public Form{
     private:
         std::string const	_target;
         std::string	static const asciiForest[2];
-        // void    writeTree(std::ostream& o);
     public:
         ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
