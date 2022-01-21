@@ -2,9 +2,12 @@
 
 Converter::Converter():literal("0"){}
 
-Converter::Converter(char const & literal):
+Converter::Converter(char const *literal):
 	literal(literal)
-{}
+{
+	this->type = this->getType();
+
+}
 
 Converter::Converter(Converter const & src):
 	literal(src.literal)
@@ -20,26 +23,70 @@ Converter&	Converter::operator=(Converter const & src){
 }
 
 // 		//------- getter
+bool     Converter::check_special(void) {
+
+}
+int     Converter::getType(void) {
+	if (this->check_special())
+		return this->type;
+	return NOT_TYPE;
+}
 const std::string     Converter::getLiteral(void) const{
 	return this->literal;
 }
         
 // 		//------- member  function
-char		Converter::getChar(void) const{
-	std::string ret;	
-	return *static_cast<char>(this->literal.c_str()));
+void		Converter::getChar(void) const{
+	if (this->type == NOT_TYPE)
+		throw convertImpossibleException();
 }
 
-int		Converter::getInt(void) const{
-	return static_cast<char>(this->literal);
+void		Converter::getInt(void) const{
+	if (this->type == NOT_TYPE)
+		throw convertImpossibleException();
 }
 
-float		Converter::getFloat(void) const{
-	return static_cast<char>(this->literal);
+void		Converter::getFloat(void) const{
+
+	if (this->type == NOT_TYPE)
+		throw convertImpossibleException();
 }
 
-double		Converter::getDouble(void) const{
-	return static_cast<char>(this->literal);
+void		Converter::getDouble(void) const{
+	if (this->type == NOT_TYPE)
+		throw convertImpossibleException();
+}
+
+
+void		Converter::print(void) const{
+	std::cout << "char : "; 
+	try{
+		this->getChar();
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "int : ";
+	try{
+		this->getInt();
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl <<  "float : " ;
+	try{
+		this->getFloat();
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "double : ";
+	try{
+		this->getDouble();
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
 }
 
 // 		//-------  Exception 
@@ -56,32 +103,4 @@ Converter::nonDisplayableException::nonDisplayableException(){}
 const char* Converter::nonDisplayableException::what() const throw()
 {
 	return "Non displayable";
-}
-
-std::ostream& operator<<(std::ostream& o, Converter const & c){
-	o << "char : "; 
-	try{
-		o << c.getChar() << std::endl;
-	} catch (std::exception & e){
-		o << e.what() << std::endl;
-	}
-	o << "int : ";
-	try{
-		o << c.getInt() << std::endl;
-	} catch (std::exception & e){
-		o << e.what() << std::endl;
-	}
-	o << "float : " ;
-	try{
-		o << c.getFloat() << std::endl;
-	} catch (std::exception & e){
-		o << e.what() << std::endl;
-	}
-	o << "double : ";
-	try{
-		o << c.getDouble() << std::endl;
-	} catch (std::exception & e){
-		o << e.what() << std::endl;
-	}
-	return o;
 }

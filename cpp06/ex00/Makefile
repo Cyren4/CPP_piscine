@@ -1,6 +1,6 @@
 CXX		=	c++
 RM		=	rm -rf
-CXXFLAGS	=	-Wall -Wextra -Werror -g
+CXXFLAGS	=	-Wall -Wextra -Werror -g -std=c++98 -pedantic
 
 NAME	= convert	
 

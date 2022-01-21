@@ -2,19 +2,31 @@
 #define CONVERTER_HPP
 
 #include <iostream>
+#include <cmath>
+#include <cfloat>
+
+#define	NOT_TYPE 0
+#define	CHAR_TYPE 1
+#define	INT_TYPE 2
+#define	FLOAT_TYPE 3
+#define	DOUBLE_TYPE 4
 
 class Converter{
 
 	private:
-		std::string const & literal;
+		char const * literal;
 		char	charL; 
-		int		intL; 
-		float	floatL
-		double	doubleL; 
+		long int		intL; 
+		float	floatL;
+		long double	doubleL; 
+		int	type;
 
 		Converter();
+// 		//------- utils member  function
+		bool	check_special(void);
+		int	getType(void);
 	public:
-		Converter(char const &literal);
+		Converter(char const *literal);
 		Converter(Converter const & src);
 		~Converter();
 
@@ -24,10 +36,12 @@ class Converter{
 		const std::string     getLiteral(void) const;
         
 // 		//------- member  function
-		char 		getChar(void) const;
-		int		getInt(void) const;
-		float		getFloat(void) const;
-		double	getDouble(void) const;
+		void	getChar(void) const;
+		void	getInt(void) const;
+		void	getFloat(void) const;
+		void	getDouble(void) const;
+
+		void	print(void) const;
 
 // 		//-------  Exception 
 		class convertImpossibleException : public std::exception{
@@ -42,7 +56,5 @@ class Converter{
 				virtual const char * what () const throw ();
 		};
 };
-
-std::ostream& operator<<(std::ostream& o, Converter const & bur); //operateur
 
 #endif
