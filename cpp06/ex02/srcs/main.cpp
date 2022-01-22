@@ -9,7 +9,7 @@
 Base::~Base(){}
 
 Base*	generate(void){
-	// srand(time(NULL));
+	srand(time(NULL));
 	int num = rand() % 90 + 1;
 	if (num < 30)
 		return new A;
@@ -34,21 +34,21 @@ void	identify(Base &p){
 		A &tmp = dynamic_cast<A&>(p);
 		std::cout << "A";
 		(void)tmp;
-	}catch (std::bad_cast e){
+	}catch (std::exception & e){
 		// std::cout << "not A" << std::endl;
 	}
 	try{
 		B &tmp = dynamic_cast<B&>(p);
 		std::cout << "B";
 		(void)tmp;
-	}catch (std::bad_cast e){
+	}catch (std::exception & e){
 		// std::cout << "not B" << std::endl;
 	}
 	try{
 		C &tmp = dynamic_cast<C&>(p);
 		std::cout << "C";
 		(void)tmp;
-	}catch (std::bad_cast e){
+	}catch (std::exception & e){
 		// std::cout << "not C" << std::endl;
 	}
 

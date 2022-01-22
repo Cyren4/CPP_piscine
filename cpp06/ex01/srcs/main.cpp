@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 typedef struct  t_Data{
+    std::string str;
 }  Data;
 
 
@@ -16,6 +17,8 @@ Data*   deserialize(uintptr_t raw){
 
 int main(){
     Data test;
+    test.str = "origin works well";
+    std::cout << test.str << std::endl;
     std::cout << "Before :\t" << &test << std::endl;
     uintptr_t test_ser = serialize(&test);
     Data *res = deserialize(test_ser);
@@ -24,5 +27,8 @@ int main(){
         std::cout << "Pointer value is the same" << std::endl;
     else
         std::cout << "Pointer value is not the same" << std::endl;
+    res->str = "I am still usable";
+    std::cout << res->str << std::endl;
+    std::cout << test.str << std::endl;
     return 0;
 }
