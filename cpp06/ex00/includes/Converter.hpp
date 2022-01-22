@@ -5,7 +5,8 @@
 #include <cmath>
 #include <cfloat>
 #include <cstring>
-// #include <limits>
+#include <cfenv>
+#include <iostream>
 
 #define	NOT_TYPE 0
 #define	CHAR_TYPE 1
@@ -16,17 +17,18 @@
 class Converter{
 
 	private:
-		char const * _literal;
+		char const* _literal;
+		long double	_value;
 
 		char		_charL; 
-		long int	_intL; 
-		float		_floatL;
-		double	_doubleL; 
+		long double	_intL; 
+		double		_floatL;
+		long double		_doubleL; 
 		int			_type;
 
 		Converter();
 // ------- utils member  function
-		bool inRange(double num, double bottom, double top) const;
+		bool inRange(long double num, double bottom, double top) const;
  		//get type 
 		bool	is_special(void);
 		bool	is_numeral(void);
@@ -44,10 +46,10 @@ class Converter{
 		const std::string     getLiteral(void) const;
         
 // 		//------- member  function
-		void	getChar(double num) const;
-		void	getInt(double num) const;
-		void	getFloat(double num) const;
-		void	getDouble(double num) const;
+		void	getChar(long double num) const;
+		void	getInt(long double num) const;
+		void	getFloat(long double num) const;
+		void	getDouble(long double num) const;
 
 		void	print(void) const;
 

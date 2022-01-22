@@ -3,11 +3,15 @@
 Converter::Converter():_literal("0"){}
 
 Converter::Converter(char const *literal):
-	_literal(literal)
+	_literal(literal), _value(0)
 {
 	this->_type = this->getType();
 	if (this->_type == NOT_TYPE)
-		return ;
+		this->_value = static_cast<long double>(strtold("nan", NULL));
+	else if (this->_type == CHAR_TYPE) 
+		this->_value = static_cast<long double>(this->_literal[0]);
+	else
+		this->_value = static_cast<long double>(strtold(this->_literal, NULL));
 }
 
 Converter::Converter(Converter const & src):
@@ -39,12 +43,12 @@ bool     Converter::is_special(void) {
 	{
 		if (strcmp(specF[i], this->_literal) == 0)
 		{
-			this->_floatL = static_cast<float>(atof(specF[i]));
+			this->_floatL = static_cast<float>(strtof(specF[i], NULL));
 			this->_type = FLOAT_TYPE;
 			return true;
 		} else if (strcmp(specD[i], this->_literal) == 0)
 		{
-			this->_doubleL = static_cast<double>(atof(specF[i]));
+			this->_doubleL = static_cast<double>(strtod(specD[i], NULL));
 			this->_type = DOUBLE_TYPE;
 			return true;
 		}
@@ -73,7 +77,7 @@ bool     Converter::is_numeral(void) {
 	if (this->_type == INT_TYPE)
 		this->_intL = strtol(this->_literal, NULL, 10);
 	if (this->_type == DOUBLE_TYPE)
-		this->_doubleL = static_cast<double>(strtod(this->_literal, NULL));
+		this->_doubleL = static_cast<long double>(strtold(this->_literal, NULL));
 	return (this->_type != NOT_TYPE);
 }
 
@@ -91,7 +95,7 @@ int	Converter::is_char(void) {
 int		Converter::getType(void) {
 	if (this->is_special())
 		return this->_type;
-	if (this->is_numeral())
+	else if (this->is_numeral())
 		return this->_type;
 	return this->is_char();
 }
@@ -101,105 +105,93 @@ const std::string     Converter::getLiteral(void) const{
 }
      
 // 		//------- utils  function
-bool Converter::inRange(double num, double bottom, double top) const
+bool Converter::inRange(long double num, double bottom, double top) const
 {
-  return (num >= bottom && num <= top);
+	// std::cout << std::endl << num <<std::endl;
+	// std::cout << bottom <<std::endl;
+	// std::cout << top <<std::endl;
+	return (num >= bottom && num <= top);
 }
 
 // 		//------- member  function
-void	Converter::getChar(double num) const{
+void	Converter::getChar(long double num) const{
 	try{
-		if (!this->inRange(num, std::numeric_limits<char>::min(), std::numeric_limits<char>::max()))
+		if (!this->inRange(num, std::numeric_limits<unsigned char>::min(), std::numeric_limits<unsigned char>::max()))
 			throw convertImpossibleException();
-		if (!isprint(static_cast<int>(num))) 
+		int tmp = static_cast<int>(num);
+		if (!isprint(static_cast<int>(tmp))) 
 			throw nonDisplayableException();	
-		std::cout  << "'" << static_cast<char>(num)<< "'" << std::endl;
+		std::cout  << "'" << static_cast<char>(tmp)<< "'";
 	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl; 
+		std::cout << e.what(); 
 	}
+	std::cout << std::endl;
 }
 
-void		Converter::getInt(double num) const{
+void		Converter::getInt(long double num) const{
 	try{
 		if (!this->inRange(num, std::numeric_limits<int>::min(), std::numeric_limits<int>::max()))
 			throw convertImpossibleException();	
-		std::cout  << static_cast<int>(num) << std::endl;
+		std::cout << static_cast<int>(num);
 	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl; 
+		std::cout << e.what(); 
 	}
+	std::cout << std::endl;
 }
 
-void		Converter::getFloat(double num) const{
+void		Converter::getFloat(long double num) const{
 	try{
-		if (!this->inRange(num, std::numeric_limits<float>::min(), std::numeric_limits<float>::max()))
+		if (!this->inRange(num, -std::numeric_limits<float>::max(), std::numeric_limits<float>::max()))
 		{
 			if (num < std::numeric_limits<float>::min())
-				std::cout  << static_cast<float>(strtof("-inff", NULL)) << std::endl;
+				std::cout  << static_cast<float>(strtof("-inf", NULL));
 			else if (num > std::numeric_limits<float>::max())
-				std::cout  << static_cast<float>(strtof("inff", NULL)) << std::endl;
+				std::cout  << static_cast<float>(strtof("inf", NULL));
 			else
-				std::cout  << static_cast<float>(strtof("nanf", NULL)) << std::endl;
+				std::cout  << static_cast<float>(strtof("nan", NULL)); 
 		}
 		else
-			std::cout  << static_cast<float>(num) << std::endl;
+			std::cout  << static_cast<float>(num);
+		if (this->_type == INT_TYPE || this->_type == CHAR_TYPE || (num - floor(num) == 0))
+			std::cout << ".0";
 	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl; 
+		std::cout << e.what(); 
 	}
+	std::cout << "f" << std::endl;
 }
 
-void		Converter::getDouble(double num) const{
+void		Converter::getDouble(long double num) const{
 	try{
-		if (!this->inRange(num, std::numeric_limits<double>::min(), std::numeric_limits<double>::max()))
+		if (!this->inRange(num, -std::numeric_limits<double>::max(), std::numeric_limits<double>::max()))
 		{
-			if (num < std::numeric_limits<double>::min())
-				std::cout  << static_cast<double>(strtod("-inf", NULL)) << std::endl;
-			else if (num > std::numeric_limits<double>::max())
-				std::cout  << static_cast<double>(strtod("inf", NULL)) << std::endl;
+			if (num < 0)
+				std::cout  << static_cast<double>(strtod("-inf", NULL));
+			else if (num > 0)
+				std::cout  << static_cast<double>(strtod("inf", NULL));
 			else
-				std::cout  << static_cast<double>(strtod("nan", NULL)) << std::endl;
+				std::cout  << static_cast<double>(strtod("nan", NULL));
 		}
-		else
-			std::cout  << static_cast<double>(num) << std::endl;
+		else{
+			std::cout  << static_cast<double>(num);
+			if (this->_type == INT_TYPE || this->_type == CHAR_TYPE || (num - floor(num) == 0))
+				std::cout << ".0";
+		}
 	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl; 
+		std::cout << e.what(); 
 	}
+	std::cout << std::endl;
 }
 
 
 void		Converter::print(void) const{
-	double	num;
-
-	try{
-		switch (this->_type)
-		{
-		case CHAR_TYPE:
-			num =  static_cast<double>(this->_charL);
-			break;
-		case INT_TYPE:
-			num =  static_cast<double>(this->_intL);
-			break;
-		case FLOAT_TYPE:
-			num =  static_cast<double>(this->_floatL);
-			break;
-		case DOUBLE_TYPE:
-			num =  static_cast<double>(this->_doubleL);
-			break;
-		default:
-			// throw convertImpossibleException();
-			num =  static_cast<double>(strtof("nan", NULL));
-			break;
-		}
-	}catch (std::exception e) {
-		std::cout << e.what(); 
-	}
 	std::cout << "char : ";
-	this->getChar(num);
+	this->getChar(this->_value);
 	std::cout << "int : ";
-	this->getInt(num);
+	this->getInt(this->_value);
 	std::cout <<  "float : " ;
-	this->getFloat(num);
+	this->getFloat(this->_value);
 	std::cout << "double : ";
-	this->getDouble(num);
+	this->getDouble(this->_value);
 }
 
 // 		//-------  Exception 
