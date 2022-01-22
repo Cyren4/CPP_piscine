@@ -1,5 +1,8 @@
 #include <iostream>
-#include <Array.hpp>
+#include "../includes/Array.hpp"
+#include <stdio.h>
+#include <stdlib.h>
+#include<time.h>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -37,7 +40,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[MAX_VAL] = 0;
+        numbers[MAX_VAL - 1] = 0;
     }
     catch(const std::exception& e)
     {
