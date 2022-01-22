@@ -5,8 +5,7 @@
 #include <cmath>
 #include <cfloat>
 #include <cstring>
-#include <cfenv>
-#include <iostream>
+#include <limits>
 
 #define	NOT_TYPE 0
 #define	CHAR_TYPE 1

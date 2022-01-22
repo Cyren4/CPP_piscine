@@ -59,8 +59,10 @@ bool     Converter::is_special(void) {
 bool     Converter::is_numeral(void) {
 	int i = 0;
 	this->_type = INT_TYPE;
-	if (this->_literal[i] == '-')
+	if (this->_literal[i] == '-' || this->_literal[i] == '+')
 		i++;
+	if	(i == 1 && this->_literal[i] == '\0')
+		return false;
 	while(this->_literal[i] && (isdigit(this->_literal[i]) || this->_literal[i] == '.'))
 	{
 		if (this->_literal[i] == '.')
@@ -88,7 +90,7 @@ int	Converter::is_char(void) {
 		this->_charL = static_cast<char>(this->_literal[0]);
 	}
 	else 
-		this->_type = NOT_TYPE;
+    _type = NOT_TYPE;
 	return this->_type;
 }
 

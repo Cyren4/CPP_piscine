@@ -2,12 +2,12 @@ CXX		=	c++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror -g -std=c++98 -pedantic
 
-NAME	= convert	
+NAME	= serialize	
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
 
-SRCS_F	=	main.cpp Converter.cpp
+SRCS_F	=	main.cpp 
 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_F))
 
