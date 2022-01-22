@@ -150,10 +150,11 @@ void		Converter::getFloat(long double num) const{
 			else
 				std::cout  << static_cast<float>(strtof("nan", NULL)); 
 		}
-		else
+		else{
 			std::cout  << static_cast<float>(num);
 		if (this->_type == INT_TYPE || this->_type == CHAR_TYPE || (num - floor(num) == 0))
 			std::cout << ".0";
+		}
 	} catch (std::exception & e) {
 		std::cout << e.what(); 
 	}
