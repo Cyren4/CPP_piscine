@@ -1,6 +1,6 @@
 #include "../includes/Span.hpp"
 #define SIZE_VECT 10000
-#define RAND_LIM 1000000
+#define RAND_LIM INT32_MAX
 
 
 int main()
@@ -37,29 +37,48 @@ int main()
         }
         sp.addNumber(6);
         try{ //1 elem vect
-            std::cout << std::endl << "Shortest span = " << sp.shortestSpan() << std::endl;
+            std::cout << "Shortest span = " << sp.shortestSpan() << std::endl;
             std::cout << "Longest span = " << sp.longestSpan() << std::endl;
         } catch(std::exception & e){
             std::cout << e.what() << std::endl;
         }
         sp.addNumber(6);
         try{ // 2 elem vect
-            std::cout << std::endl << "Shortest span = " << sp.shortestSpan() << std::endl;
+            std::cout << "Shortest span = " << sp.shortestSpan() << std::endl;
             std::cout << "Longest span = " << sp.longestSpan() << std::endl;
         } catch(std::exception & e){
             std::cout << e.what() << std::endl;
         }
     }
     {
-        std::cout << std::endl  << "--------Test basic span --------" << std::endl;
+        std::cout << std::endl  << "--------Test range basic span --------" << std::endl;
+        Span sp = Span(SIZE_VECT);
+        int start = -12, stop = 60, step = 3;
+        try{
+            sp.addNumRange(start, stop, step);
+        } catch(const std::exception& e){
+            std::cerr << e.what() << std::endl;
+        }
+        std::cout << "In vector : ";
+        sp.print_vect();
+        std::cout << std::endl;
+        try{
+            std::cout << "In  vector  of size : "<< SIZE_VECT << " with value from " << start << " to " << stop <<" with step of " << step << std::endl ;
+            std::cout << "Shortest span = " <<  sp.shortestSpan() << std::endl;
+            std::cout << "Longest span = " << sp.longestSpan() << std::endl;
+        }catch(const std::exception& e){
+            std::cerr << e.what() << std::endl;
+        }
     }
     {
-        std::cout << std::endl << "--------Test bigger Span --------" << std::endl;
+        std::cout << std::endl << "--------Test random bigger Span --------" << std::endl;
         Span sp = Span(SIZE_VECT);
-
-        for (int i = 0; i < SIZE_VECT; i++)
-            sp.addNumber(rand() % RAND_LIM);
-
+        sp.addNumRand(SIZE_VECT, RAND_LIM);
+        try{
+            sp.addNumRand(SIZE_VECT, RAND_LIM);
+        } catch(const std::exception& e) {
+            std::cerr << e.what() << std::endl;
+        }
         std::cout << "In  vector  of size : "<< SIZE_VECT<< " with value from 0 to " << RAND_LIM << std::endl ;
         std::cout << "Shortest span = " <<  sp.shortestSpan() << std::endl;
         std::cout << "Longest span = " << sp.longestSpan() << std::endl;

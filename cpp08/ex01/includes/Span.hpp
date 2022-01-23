@@ -10,7 +10,7 @@ class Span{
     private:
         std::vector<int>  _myvector;
         unsigned int _maxSize;
-        unsigned int _nbElem;
+
         void    isSpan();
     public:
         Span();
@@ -22,7 +22,9 @@ class Span{
 
         //member function
         void    addNumber(int num);
-        void    addNumber(std::vector<int>  newElements);
+        void    addNumbers(std::vector<int>  newElements);
+        void    addNumRand(int nbElem, int maxVal);
+        void    addNumRange(int from, int to, int step);
         int     shortestSpan();
         int     longestSpan();
         void    print_vect();

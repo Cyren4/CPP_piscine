@@ -2,7 +2,7 @@
 
 Span::Span(){}
 
-Span::Span(unsigned int N) : _maxSize(N), _nbElem(0)
+Span::Span(unsigned int N) : _maxSize(N)
 {}
 
 Span::Span(Span const & src){
@@ -16,29 +16,40 @@ Span& Span::operator=(Span const & src){
         return *this;
     this->_myvector = src._myvector;
     this->_maxSize = src._maxSize;
-    this->_nbElem = src._nbElem;
     return *this;
 }
 
         //member function
 void    Span::addNumber(int num){
-    if (this->_nbElem >= this->_maxSize)
+    if (this->_myvector.size() >= this->_maxSize)
         throw fullSpanException();
     this->_myvector.push_back(num);
-    this->_nbElem++;
 }
 
-void    Span::addNumber(std::vector<int> newElements){
-    std::vector<int>::iterator it;
-    for (it = newElements.begin(); it!= newElements.end(); ++it)
+void    Span::addNumbers(std::vector<int> newElements){
+    for (std::vector<int>::iterator it = newElements.begin(); it!= newElements.end(); ++it)
     {
-        if (this->_nbElem >= this->_maxSize)
+        if (this->_myvector.size() >= this->_maxSize)
             throw fullSpanException();
         this->_myvector.push_back(*it);
-        this->_nbElem++;
     }
 }
 
+void    Span::addNumRand(int nbElem, int maxVal){
+    srand(time(NULL));
+    if (maxVal == 0)
+        throw std::overflow_error("Divide by zero exception");
+    for (int i = 0; i < nbElem; i++)
+        this->addNumber(rand() % maxVal);
+}
+
+void    Span::addNumRange(int from, int to, int step){
+    if (from > to || step <= 0)
+        throw std::overflow_error("Invalid step or range order exception");
+    for (int i = from; i < to; i+= step)
+        this->addNumber(i); 
+}
+      
 int     Span::shortestSpan(){
     isSpan();
     std::sort(this->_myvector.begin(), this->_myvector.end());
