@@ -40,7 +40,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[MAX_VAL - 1] = 0;
+        numbers[MAX_VAL] = 0;
     }
     catch(const std::exception& e)
     {
@@ -51,6 +51,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }

@@ -16,8 +16,8 @@ class Array{
 			};
 
     	Array(unsigned int n) {
-			tab = NULL;
-			_size = n;
+			this->tab = NULL;
+			this->_size = n;
 			if (n > 0)
 				tab = new T[n];
 		};
@@ -28,14 +28,14 @@ class Array{
 		};
 		
     	~Array() {
-			delete tab;
+			delete [] tab;
 		};
 
     	Array&	operator=(const Array & src){
 			if (this == &src)
 				return *this;
-			if (this->_size > 0 || this->tab == NULL)
-				delete this->tab;
+			delete [] this->tab;
+			this->tab = NULL;
 			this->_size = src._size;
 			if (!src._size)
 				return *this;
