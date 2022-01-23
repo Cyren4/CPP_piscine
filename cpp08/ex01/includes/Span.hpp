@@ -4,11 +4,13 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <time.h>
 
 class Span{
     private:
         std::vector<int>  _myvector;
-
+        unsigned int _maxSize;
+        unsigned int _nbElem;
         void    isSpan();
     public:
         Span();
@@ -23,19 +25,16 @@ class Span{
         void    addNumber(std::vector<int>  newElements);
         int     shortestSpan();
         int     longestSpan();
+        void    print_vect();
 
         //  Exception
         class fullSpanException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				fullSpanException();
 				virtual const char * what () const throw ();
 		};
 
         class noSpanException : public std::exception{
-			private:
-				static const int max = 1;
 			public :
 				noSpanException();
 				virtual const char * what () const throw ();
