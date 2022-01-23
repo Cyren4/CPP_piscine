@@ -25,6 +25,7 @@ void    Span::addNumber(int num){
     if (this->_nbElem >= this->_maxSize)
         throw fullSpanException();
     this->_myvector.push_back(num);
+    this->_nbElem++;
 }
 
 void    Span::addNumber(std::vector<int> newElements){
@@ -34,6 +35,7 @@ void    Span::addNumber(std::vector<int> newElements){
         if (this->_nbElem >= this->_maxSize)
             throw fullSpanException();
         this->_myvector.push_back(*it);
+        this->_nbElem++;
     }
 }
 
@@ -67,6 +69,9 @@ void    Span::isSpan(){
 void    Span::print_vect(){
     for (std::vector<int>::iterator it = this->_myvector.begin(); it != this->_myvector.end(); it++)
         std::cout << *it << " ";
+    if (this->_myvector.empty())
+        std::cout << "Empty vector ";
+    std::cout << std::endl;
 }
 
 
