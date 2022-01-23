@@ -8,6 +8,8 @@ class Awesome{
             int _n;
 };
 
+
+
 std::ostream & operator<<(std::ostream & o, Awesome const &rhs){
     o<<rhs.get();
     return o;
@@ -20,9 +22,11 @@ void    print(T const & x){std::cout << x << std::endl;return;}
 int main(){
     int tab[] = {0,1,2,3,4};
     Awesome tab2[5];
+    char tab3[] = {'a','b','c','d','f'};
 
     iter(tab, 5, print);
     iter(tab2, 5, print);
+    iter(tab3, 5, print);
 
     return 0;
 }
