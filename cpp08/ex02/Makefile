@@ -2,7 +2,7 @@ CXX		=	c++
 RM		=	rm -rf
 CXXFLAGS	=	-Wall -Wextra -Werror -g -std=c++98 -pedantic
 
-NAME	= convert	
+NAME	=	mutantStack	
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs

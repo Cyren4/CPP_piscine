@@ -9,31 +9,53 @@
 template<typename T>
 class MutantStack : public std::stack<T>{
     public:
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+
         MutantStack() : std::stack<T>(){}
-        MutantStack(MutantStack const & src){
+        MutantStack(MutantStack<T> const & src){
             *this = src;
         }
         ~MutantStack(){}
 
-        MutantStack&    operator=(MutantStack const & src){
-            *this = src;
+        MutantStack<T>&    operator=(MutantStack<T> const & src){
+            if (this != &src)
+                this->c = src.c;
             return *this;
         }
 
-        typedef typename T::iterator
-        // T*    easyfind(T & fp, int sp){
-        //     typename T::iterator it = std::find(fp.begin(), fp.end(), sp);
-        //     if (it == fp.end())
-        //         throw notInContainerException();
-        // return *it;
-        // }
 
-        <iterator> begin(){
-            return this->begin();
+        iterator    begin(){
+            return this->c.begin();
         }
-        <iterator> end(){
-            return this->end();
+        iterator    end(){
+            return this->c.end();
         } 
+ 
+        const_iterator    cbegin(){
+            return this->c.cbegin();
+        }
+        const_iterator    cend(){
+            return this->c.cend();
+        }       
+        
+        reverse_iterator    rbegin(){
+            return this->c.rbegin();
+        }
+
+        reverse_iterator    rend(){
+            return this->c.rend();
+        }
+        
+        const_reverse_iterator    crbegin(){
+            return this->c.crbegin();
+        }
+
+        reverse_iterator    crend(){
+            return this->c.crend();
+        }  
 };
 
 #endif

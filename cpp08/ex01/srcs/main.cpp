@@ -1,6 +1,6 @@
 #include "../includes/Span.hpp"
 #define SIZE_VECT 10000
-#define RAND_LIM INT32_MAX
+#define RAND_LIM 2147483647
 
 
 int main()
