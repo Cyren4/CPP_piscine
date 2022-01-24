@@ -3,7 +3,7 @@
 int main()
 {
     {
-        std::cout << "---Test mutantStack" << std::endl;   
+        std::cout << "---Test sujet mutantStack" << std::endl;   
         MutantStack<int> mstack;
 
         mstack.push(5);
@@ -16,17 +16,17 @@ int main()
         mstack.push(737);
         mstack.push(0);
         MutantStack<int>::iterator it = mstack.begin();
-        MutantStack<int>::iterator ite = mstack.end();
-        ++it;
-        --it;
-        while (it != ite){
-            std::cout << *it << std::endl;
-            ++it;
-        }
-        std::stack<int> s(mstack);
+        // MutantStack<int>::iterator ite = mstack.end();
+        // ++it;
+        // --it;
+        // while (it != ite){
+        //     std::cout << *it << std::endl;
+        //     ++it;
+        // }
+        // std::stack<int> s(mstack);
     }
     {
-        std::cout << "---Test list" << std::endl;   
+        std::cout << "---Test sujet list" << std::endl;   
         std::list<int> mlist;
     
         mlist.push_back(5);
